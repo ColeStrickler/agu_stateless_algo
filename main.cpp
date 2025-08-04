@@ -81,6 +81,7 @@ volatile uint32_t check(uint32_t x, uint32_t d)
         magic_result = magic_result >> m.s;
     }
     unsigned long long end = rdtsc();
+    printf("m.s %d\n", m.s);
      std::cout << "Cycles elapsed: " << (end - start) << std::endl;
     return magic_result;
     
@@ -96,7 +97,8 @@ int main() {
     auto start = std::chrono::high_resolution_clock::now();
     //printf("Magic M = 0x%X, Shift s = %d\n", m.M, m.s);
     auto x = check(65517063, d);
-    
+    x = check(65517063, 5517063);
+    x = check(655, 5517);
 
     auto end = std::chrono::high_resolution_clock::now();
     auto duration_us = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
